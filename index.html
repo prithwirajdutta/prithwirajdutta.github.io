@@ -1,60 +1,97 @@
 <html>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-<body>
-   <center> 
-      <h1>Experimenting with Chart.js</h1> 
-       <div style="max-width:800px;max-height:500px;">
-        <canvas id="myChart"></canvas>
-    </div></center>
+<body style="padding-top:20px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3" style="background-color:#F5B041;padding:20px;min-height:500px;">
+          <img src="pd.jpg" alt="" style="width:100%">
+      </div>
+      <div class="col-md-9" style="background-color:#F4F6F6;padding:20px;min-height:500px;">
+        <div class="row">
+          <div class="col-md-4">
+                <canvas id="canvas1" style="max-width:500px;max-height:420px;"></canvas>
+          </div>
+          <div class="col-md-4">
+                <canvas id="canvas2" style="max-width:500px;max-height:420px;"></canvas>
+          </div>
+          <div class="col-md-4">
+                <canvas id="canvas3" style="max-width:500px;max-height:420px;"></canvas>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
 </body>
-<script>
-var abc=document.getElementById('myChart').getContext('2d');
-var chart = new Chart(abc,{
-   type:'polarArea',
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<script type="text/javascript">
+  var c1 = document.getElementById('canvas1').getContext('2d');
+  var chart1 = new Chart(c1,{
+    type:'doughnut',
     data:{
-    labels:["python","javascript","java","c","php","sql"],
-    datasets:[{
-        label:"MySkills",
-        backgroundColor:['rgb(255, 99, 132)','rgb(13, 210, 213)','rgb(13, 210, 213)','rgb(118, 215, 196)','rgb(247, 220, 111)','rgb(240, 178, 122  )'],
-        data:[9,6,8,5,9,8]
+      labels:['php',''],
+      datasets:[{
+      data:[7,3],
+      backgroundColor:['#FF669B','#FFFFFF']
     }]
-    },
-   options: {
-//                responsive: true,
-//                legend: {
-//                    position: 'bottom',
-//                },
-//                hover: {
-//                    mode: 'label'
-//                },
-                scales: {
-                    xAxes: [{
-                            display: true,
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Skills'
-                            }
-                        }],
-                    yAxes: [{
-                            display: true,
-                          scaleLabel: {
-                                display: true,
-                                labelString: 'Level of expertise'
-                            },
-                            ticks: {
-                                beginAtZero: true,
-                                steps: 10,
-                                stepValue: 1,
-                                max: 10
-                            }
-                        }]
-                },
-//                title: {
-//                    display: true,
-//                    text: 'Chart.js Line Chart - Legend'
-//                }
-            }
-        
+  },
+  options:{
+    scales:{
+      yAxes:[{
+        ticks:{
+        beginAtZero:true,
+        step:10,
+        stepValue:1
+      }
+      }]
+    }
+  }
+});
+var c2 = document.getElementById('canvas2').getContext('2d');
+var chart2 = new Chart(c2,{
+  type:'doughnut',
+  data:{
+    labels:['reactjs',''],
+    datasets:[{
+    data:[4,6],
+    backgroundColor:['#F5B041','#FFFFFF']
+  }]
+},
+options:{
+  scales:{
+    yAxes:[{
+      ticks:{
+      beginAtZero:true,
+      step:10,
+      stepValue:1
+    }
+    }]
+  }
+}
+});
+var c3 = document.getElementById('canvas3').getContext('2d');
+var chart3 = new Chart(c3,{
+  type:'doughnut',
+  data:{
+    labels:['core java',''],
+    datasets:[{
+    data:[8,2],
+    backgroundColor:['#5DADE2','#FFFFFF']
+  }]
+},
+options:{
+  scales:{
+    yAxes:[{
+      ticks:{
+      beginAtZero:true,
+      step:10,
+      stepValue:1
+    }
+    }]
+  }
+}
 });
 </script>
 </html>
