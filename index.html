@@ -1,5 +1,60 @@
 <html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <body>
-<h1>Hello World !</h1>
+   <center> 
+      <h1>Experimenting with Chart.js</h1> 
+       <div style="max-width:800px;max-height:500px;">
+        <canvas id="myChart"></canvas>
+    </div></center>
 </body>
+<script>
+var abc=document.getElementById('myChart').getContext('2d');
+var chart = new Chart(abc,{
+   type:'bar',
+    data:{
+    labels:["python","javascript","java","c","php","sql"],
+    datasets:[{
+        label:"MySkills",
+        backgroundColor:['rgb(255, 99, 132)','rgb(13, 210, 213)','rgb(13, 210, 213)','rgb(118, 215, 196)','rgb(247, 220, 111)','rgb(240, 178, 122  )'],
+        data:[9,6,8,5,9,8]
+    }]
+    },
+   options: {
+//                responsive: true,
+//                legend: {
+//                    position: 'bottom',
+//                },
+//                hover: {
+//                    mode: 'label'
+//                },
+                scales: {
+                    xAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Skills'
+                            }
+                        }],
+                    yAxes: [{
+                            display: true,
+                          scaleLabel: {
+                                display: true,
+                                labelString: 'Level of expertise'
+                            },
+                            ticks: {
+                                beginAtZero: true,
+                                steps: 10,
+                                stepValue: 1,
+                                max: 10
+                            }
+                        }]
+                },
+//                title: {
+//                    display: true,
+//                    text: 'Chart.js Line Chart - Legend'
+//                }
+            }
+        
+});
+</script>
 </html>
