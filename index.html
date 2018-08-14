@@ -1,117 +1,194 @@
-<html>
-<style>
-    span{
-        color:white;padding:10px;width:100%;
-    }
-</style>
-<body style="padding-top:20px;">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3" style="background-color:#F5B041;padding:20px;min-height:500px;">
-          <img src="pd.jpg" alt="" style="width:100%"><br><br>
-          <span>Prithwiraj Dutta</span><br>
-          <span><a style="color:white;text-decoration:none;" href="http://prithwilife.com/" target="_blank">www.prithwilife.com</a></span><br>
-          <span><b>Degree : </b>B.Tech (IT) Graduate</span><br>
-           <span><b>Employed At : </b></span><br>
-          <span>Cognizant (Role: Development)</span><br>
-          <span><b>Interests :</b></span><br>
-           <span>Web and App Development</span><br>
-      </div>
-      <div class="col-md-9" style="background-color:#F4F6F6;padding:20px;min-height:500px;">
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <title>Prithwiraj Dutta</title>
+  </head>
+    <style>
+        #links{
+            color:white;
+            text-decoration: none;
+        }
+        #links:hover{
+            color:light-grey;
+        }
+        #github{
+            font-size:30px;
+            color:grey;
+        }
+         #carddata{
+    max-width:300px;
+    height:420px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+        #cardbtn{
+  position:absolute;
+  bottom:40px;
+  right:60px;
+  border-radius:0px;
+}
+#cardbtn:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+    </style>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);" >
+<!--  <a class="navbar-brand" href="#">Navbar</a>-->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Academia</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://prithwilife.com/" target="_blank">Website</a>
+      </li>
+      <!-- <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li> -->
+    </ul>
+     <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+<!--        <a href="https://github.com/prithwirajdutta" id="github" target="_blank"><i class="fab fa-github-square"></i></a>-->
+          <a href="https://github.com/prithwirajdutta" id="github" target="_blank"><i class="fab fa-github-alt"></i></a>
+      </li>
+      </ul>
+  </div>
+</nav>
+
+    <div class="jumbotron" style="height:300px;background:url('https://steemitimages.com/DQmcP6aRq89b1nNbqrGkcUXxjb3C7EwVRx94i7dPJsrViCB/MW-EC045_comput_ZH_20151224095234.jpg')no-repeat;background-size:cover;border-radius:0px;margin-top:55px;">
+        <center>
+          <h2 style="font-size:60px;color:white;">Prithwiraj Dutta</h2><br>
+          <h5 style="color:white;"></h5>
+            <a href="http://prithwilife.com/" target="_blank" class="btn btn-info" style="padding:10px 20px;">View Website</a>
+        </center>
+        </div><br><br>
+    <div class="container-fluid">
         <div class="row">
-          <div class="col-md-4">
-                <canvas id="canvas1" style="max-width:500px;max-height:420px;"></canvas>
-          </div>
-          <div class="col-md-4">
-                <canvas id="canvas2" style="max-width:500px;max-height:420px;"></canvas>
-          </div>
-          <div class="col-md-4">
-                <canvas id="canvas3" style="max-width:500px;max-height:420px;"></canvas>
-          </div>
-        </div><br><hr><br>
-           <div class="container">
-            <p><b>Projects :</b><br>
-            <a href="http://sigmau2analytics.com/" target="_blank">www.sigmau2analytics.com</a><br>
-            <a href="http://prithwilife.com/" target="_blank">www.prithwilife.com</a><br>
-            <a href="https://github.com/prithwirajdutta/hospital-management-system" target="_blank">Hospital Management System</a><br>
-            <a href="https://github.com/prithwirajdutta/weatherapp" target="_blank">Weather app using React Js and Api</a><br>
+            <div class="col-md-2"></div>
+            <div class="col-md-3"><br>
+               <center> <img src="http://prithwilife.com/images/prithwi.jpg" style="width:250px;height:250px;border-radius:50%;"/></center><br><br>
+            </div>
+             
+            <div class="col-md-5">
+                <center>
+                    <h1 style="font-size:50px;"><i class="far fa-address-card"></i></h1>
+                    <h3>About Me</h3><br>
+                    <p style="text-align:justify;">Welcome to my site. I am a graduate in Information Technology and work as a Software Developer at Cognizant currently. I enjoy all type of development work and enjoy sharing the same on my Youtube Channel. I also have interest in Data Science and Machine Learning which I had been exposed to during my graduation as my final year project.</p>
+                </center>
+            </div>
+             <div class="col-md-2"></div>
         </div>
-        </div>
-       
-      </div>
+    </div><br><br>
+      <div class="container"><hr>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="container" id="carddata" style="padding:0px;text-align:center;">
+<!--        <img src="images/cd1.png" style="object-fit:contain;width:100%;">-->
+          <div style="width:100%;height:200px;background-color:#00BCD4;">
+            <center><h1 style="font-size:100px;color:white;padding-top:30px;"><i class="fas fa-book-open"></i></h1></center>
+          </div><br>
+        <h5>Academia</h5><br>
+        <p style="text-align:justify;margin:0px 15px;"><small>This module contains a brief timeline of my academics.</small></p><br>
+        <a href="aisolutions.php" id="cardbtn" class="btn btn-danger">View Details</a>
+      </div><br>
     </div>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-<script type="text/javascript">
-  var c1 = document.getElementById('canvas1').getContext('2d');
-  var chart1 = new Chart(c1,{
-    type:'doughnut',
-    data:{
-      labels:['php',''],
-      datasets:[{
-      data:[7,3],
-      backgroundColor:['#FF669B','#FFFFFF']
-    }]
-  },
-  options:{
-    scales:{
-      yAxes:[{
-        ticks:{
-        beginAtZero:true,
-        step:10,
-        stepValue:1
-      }
-      }]
-    }
-  }
-});
-var c2 = document.getElementById('canvas2').getContext('2d');
-var chart2 = new Chart(c2,{
-  type:'doughnut',
-  data:{
-    labels:['reactjs',''],
-    datasets:[{
-    data:[6,4],
-    backgroundColor:['#F5B041','#FFFFFF']
-  }]
-},
-options:{
-  scales:{
-    yAxes:[{
-      ticks:{
-      beginAtZero:true,
-      step:10,
-      stepValue:1
-    }
-    }]
-  }
-}
-});
-var c3 = document.getElementById('canvas3').getContext('2d');
-var chart3 = new Chart(c3,{
-  type:'doughnut',
-  data:{
-    labels:['core java',''],
-    datasets:[{
-    data:[8,2],
-    backgroundColor:['#5DADE2','#FFFFFF']
-  }]
-},
-options:{
-  scales:{
-    yAxes:[{
-      ticks:{
-      beginAtZero:true,
-      step:10,
-      stepValue:1
-    }
-    }]
-  }
-}
-});
-</script>
+    <div class="col-md-4">
+       <div class="container" id="carddata" style="padding:0px;text-align:center;">
+<!--        <img src="images/cd1.png" style="object-fit:contain;width:100%;">-->
+          <div style="width:100%;height:200px;background-color:#00BCD4;">
+            <center><h1 style="font-size:100px;color:white;padding-top:30px;"><i class="fas fa-laptop-code"></i></center>
+          </div><br>
+        <h5>Projects</h5><br>
+        <p style="text-align:justify;margin:0px 15px;"><small>This module contains all my hobby projects, research works and corporate world projects.</small></p><br>
+        <a href="aisolutions.php" id="cardbtn" class="btn btn-danger">View Details</a>
+      </div><br>
+    </div>
+    <div class="col-md-4">
+        <div class="container" id="carddata" style="padding:0px;text-align:center;">
+<!--        <img src="images/cd1.png" style="object-fit:contain;width:100%;">-->
+          <div style="width:100%;height:200px;background-color:#00BCD4;">
+            <center><h1 style="font-size:100px;color:white;padding-top:30px;"><i class="fas fa-mobile-alt"></i></h1></center>
+          </div><br>
+        <h5>Applications</h5><br>
+        <p style="text-align:justify;margin:0px 15px;"><small>This Module contains details of applications created by me which are running in production.</small></p><br>
+        <a href="aisolutions.php" id="cardbtn" class="btn btn-danger">View Details</a>
+      </div><br>
+      </div></div></div>
+<!--
+    <div class="container">
+        <hr><br><br><center>
+            <h1 style="font-size:50px;"><i class="fas fa-comments"></i></h1>
+                    <h3>Contact Me</h3><br> </center>  
+          <div class="row">
+            <div class="col-md-6">
+                <center>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Skype_logo.svg/2000px-Skype_logo.svg.png" style="width:200px;height:100px;"/><br><br>
+                    <p>Skype Link</p>
+                </center>  
+            </div>
+            <div class="col-md-6">
+               <center> <img src="https://cdn.vox-cdn.com/thumbor/X__Lds4Z1fhaE8L5z9Hy4bun1sI=/0x0:800x533/1200x800/filters:focal(0x0:800x533)/cdn.vox-cdn.com/uploads/chorus_image/image/47654927/GMail-Android-R.0.png" style="width:180px;height:120px;"/><br><br>
+                    <p>Mail Link</p>  </center>
+            </div>
+          </div>
+    </div><br><br>
+-->
+   <!--************Footer***************-->
+<footer style="min-height:200px;background-color:#00BCD4;color:white;">
+	<div class="container-fluid" style="padding-top:20px;">
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-3">
+			<h5>Connect to Prithwiraj :</h5>
+		<h1 id="social">
+			<a href="https://www.facebook.com/prithwiraj.dutta.900" id="links" target="_blank"><i class="fab fa-facebook-square"></i></a>
+			<a href="https://www.linkedin.com/in/prithwiraj-dutta-8a861a120/" id="links" target="_blank"><i class="fab fa-linkedin"></i></a>
+			<a href="https://www.youtube.com/channel/UCLSxrKkOZdHfh0jVkRwJiYw" id="links"  target="_blank"><i class="fab fa-youtube-square"></i></a>
+            <a href="#" id="links" target="_blank"><i class="fas fa-at"></i></a>
+            <a href="#" id="links" target="_blank"><i class="fab fa-skype"></i></a>
+		</h1>
+		<hr>
+		</div>
+        <div class="col-md-3"></div>
+		<div class="col-md-5">
+      </div>
+	</div>
+</div>
+</footer>
+<footer style="height:70px;background-color:#0097A7;color:white;padding:15px;">
+	<div class="row">
+		<div class="col-md-8">Developed by Prithwiraj Dutta</div>
+		<div class="col-md-4">
+	</div>
+</footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
 </html>
