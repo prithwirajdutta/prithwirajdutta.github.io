@@ -106,12 +106,6 @@ xmp{
             <li>The Thankyou page will have Ampscript code which will work behind the scene inorder to trigger the email and update the data extension.</li>
         </ul>
         <xmp>
-   <html>
-  <body>
-    %%[
-VAR  @name, @email
-SET @name = RequestParameter("name")
-SET @email = RequestParameter("email")
 
   SET @ts = CreateObject("TriggeredSend")  
   SET @td = CreateObject("TriggeredSendDefinition")  
@@ -127,19 +121,12 @@ SET @email = RequestParameter("email")
   SetObjectProperty(@ts1, "Value", @name)
   AddObjectArrayItem(@ts1, "Attributes", @ts1)
   
-  SET @ts2 = CreateObject("Attribute")
-  SetObjectProperty(@ts2, "Name", "Email")
-  SetObjectProperty(@ts2, "Value", @email)
-  AddObjectArrayItem(@tssub, "Attributes", @ts2)
-    
+	 ...
+	  
   AddObjectArrayItem(@ts, "Subscribers", @tssub)
   SET @ts_statusCode = InvokeCreate(@ts, @ts_statusMsg, @errorCode)
 
-  ]%%
-            <h1>Thank You for Registration.</h1>
-  </body>
-</html>
-
+        
         </xmp>
         <p><b>Use Case :</b>  Trigger Send can be used for OTP verification or Confirm Registration from Email.</p>
 </div>
