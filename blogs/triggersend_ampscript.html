@@ -1,0 +1,181 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <title>Prithwiraj Dutta</title>
+  </head>
+    <style>
+        #links{
+            color:white;
+            text-decoration: none;
+        }
+        #links:hover{
+            color:light-grey;
+        }
+        #github{
+            font-size:30px;
+            color:grey;
+        }
+         #carddata{
+    max-width:300px;
+    height:420px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+        #cardbtn{
+  position:absolute;
+  bottom:40px;
+  right:60px;
+  border-radius:0px;
+}
+#cardbtn:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+xmp{
+    padding:30px;
+    background-color:#2C3E50;
+    color:white;
+}
+    </style>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);" >
+<!--  <a class="navbar-brand" href="#">Navbar</a>-->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="./index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./academia.html">Academia</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./projects.html">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://prithwilife.com/" target="_blank">Website</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./Blogs.html" target="_blank">Blogs</a>
+      </li>
+      <!-- <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li> -->
+    </ul>
+     <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+<!--        <a href="https://github.com/prithwirajdutta" id="github" target="_blank"><i class="fab fa-github-square"></i></a>-->
+          <a href="https://github.com/prithwirajdutta" id="github" target="_blank"><i class="fab fa-github-alt"></i></a>
+      </li>
+      </ul>
+  </div>
+</nav>
+
+<!-- blog content -->
+
+<div class="container" style="min-height:700px;">
+        <h1>TriggerSend in Salesforce Marketing Cloud</h1><br>
+        <h4>What is the functionality of Trigger Send ?</h4><br>
+        <p>Trigger Send is a functionality which can be utilized to send email notification to customers on successful registration using a form page. To perform this it is necessary to follow the below steps to setup a trigger. </p>
+        <br>
+        <p><b>To create a triggersend we can follow the below steps –</b></p>
+        <br>
+        <ul>
+            <li>Create Email : Email needs to be created. Which can be HTML Paste or Template as per requirement.</li>
+            <li>Create Data Extension : Data Extension should be created using Template -> TriggerSend Template.</li>
+            <li>Create Trigger Send Definition : TriggerSend Definition can be created from Email Studio Interactions -> Triggered Emails</li>
+            <li>Create a Landing Page in Web Studio inside a Collection.</li>
+            <li>Add a from which on submission should have action to a “Thank you” Page.</li>
+            <li>The Thankyou page will have Ampscript code which will work behind the scene inorder to trigger the email and update the data extension.</li>
+        </ul>
+        <xmp>
+   <html>
+  <body>
+    %%[
+VAR  @name, @email
+SET @name = RequestParameter("name")
+SET @email = RequestParameter("email")
+
+  SET @ts = CreateObject("TriggeredSend")  
+  SET @td = CreateObject("TriggeredSendDefinition")  
+  SetObjectProperty(@td,"CustomerKey","#####")  
+  SetObjectProperty(@ts, "TriggeredSendDefinition", @td)
+  
+  SET @tssub = CreateObject("Subscriber")
+  SetObjectProperty(@tssub,"EmailAddress",@email)
+  SetObjectProperty(@tssub,"SubscriberKey",@email)
+  
+  SET @ts1 = CreateObject("Attribute")
+  SetObjectProperty(@ts1, "Name", "Name")
+  SetObjectProperty(@ts1, "Value", @name)
+  AddObjectArrayItem(@ts1, "Attributes", @ts1)
+  
+  SET @ts2 = CreateObject("Attribute")
+  SetObjectProperty(@ts2, "Name", "Email")
+  SetObjectProperty(@ts2, "Value", @email)
+  AddObjectArrayItem(@tssub, "Attributes", @ts2)
+    
+  AddObjectArrayItem(@ts, "Subscribers", @tssub)
+  SET @ts_statusCode = InvokeCreate(@ts, @ts_statusMsg, @errorCode)
+
+  ]%%
+            <h1>Thank You for Registration.</h1>
+  </body>
+</html>
+
+        </xmp>
+        <p><b>Use Case :</b>  Trigger Send can be used for OTP verification or Confirm Registration from Email.</p>
+</div>
+
+  <!--************Footer***************-->
+<footer style="min-height:200px;background-color:#00BCD4;color:white;">
+	<div class="container-fluid" style="padding-top:20px;">
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-3">
+			<h5>Connect to Prithwiraj :</h5>
+		<h1 id="social">
+			<a href="https://www.facebook.com/prithwiraj.dutta.900" id="links" target="_blank"><i class="fab fa-facebook-square"></i></a>
+			<a href="https://www.linkedin.com/in/prithwiraj-dutta-8a861a120/" id="links" target="_blank"><i class="fab fa-linkedin"></i></a>
+			<a href="https://www.youtube.com/channel/UCLSxrKkOZdHfh0jVkRwJiYw" id="links"  target="_blank"><i class="fab fa-youtube-square"></i></a>
+            <a href="#" id="links" target="_blank"><i class="fas fa-at"></i></a>
+            <a href="#" id="links" target="_blank"><i class="fab fa-skype"></i></a>
+		</h1>
+		<hr>
+		</div>
+        <div class="col-md-3"></div>
+		<div class="col-md-5">
+      </div>
+	</div>
+</div>
+</footer>
+<footer style="height:70px;background-color:#0097A7;color:white;padding:15px;">
+	<div class="row">
+		<div class="col-md-8">Developed by Prithwiraj Dutta</div>
+		<div class="col-md-4">
+	</div>
+</footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
