@@ -1,0 +1,190 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);" >
+<!--  <a class="navbar-brand" href="#">Navbar</a>-->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../academia.html">Academia</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../projects.html">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://prithwilife.com/" target="_blank">Website</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../Blogs.html" target="_blank">Blogs</a>
+      </li>
+      <!-- <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li> -->
+    </ul>
+     <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+<!--        <a href="https://github.com/prithwirajdutta" id="github" target="_blank"><i class="fab fa-github-square"></i></a>-->
+          <a href="https://github.com/prithwirajdutta" id="github" target="_blank"><i class="fab fa-github-alt"></i></a>
+      </li>
+      </ul>
+  </div>
+</nav>
+    </head>
+    <body style="padding-top:50px;">
+       <center>
+        <div class="container">
+            <div class="card" style="max-width:800px;border-radius:10px;">
+                <div style="background-color:#C0392B;max-width:800px;height:200px;border-radius:10px 10px 0px 0px;border-bottom:10px solid black;">
+                </div>
+                <div style="max-width:800px;min-height:400px;">
+                    <div id="pic" style="width:150px;height:150px;border-radius:50%;position:relative;top:-80px;background-color:white;border:10px solid black;"></div>
+                    <div class="row">
+                        <div class="col-md-6"><div class="container" style="text-align:left !important;" id="desc"></div></div>
+                        <div class="col-md-6">
+                                <div class="container">
+                                        <form id="frm">
+                                           <div class="row">
+                                                <div class="col-md-1"></div>
+                                               <div class="col-md-7">
+                                                    <input type="text" id="pkmn" class="form-control" placeholder="Enter a Pokemon"/><br>
+                                               </div>
+                                               <div class="col-md-3"><input type="submit" value="Search" class="btn btn-light"/></div>
+                                               <div class="col-md-1"></div>
+                                           </div>
+                                            
+                                        </form>
+                                        <div id="hd"><canvas id="myChart" style="width:200px;height:200px;"></canvas></div>
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+       </center>
+    </body>
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
+     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script>
+        $(document).ready(function(){
+            fetch(`https://pokeapi.co/api/v2/pokemon/pikachu/`).then(res=>res.json()).then(data=>{
+                var pic = document.getElementById('pic');
+                pic.innerHTML = "<img src='"+ data.sprites.front_shiny + "'style='position:relative;top:-10px;' width=150 height=150/>";
+                console.log(data);
+                var desc = document.getElementById('desc');
+                var abilities = data.abilities;
+                var moves = data.moves;
+                desc.innerHTML = "<p><b>Type:</b> "+ data.types[0].type.name +
+                "</p><hr><p id='abty'><b>Abilities: </b></p>";
+                for(var i=0;i<abilities.length;i++){
+                       abty.innerHTML += "<span class='badge badge-danger'>" +abilities[i].ability.name + "</span>&nbsp;";
+                    }
+                    abty.innerHTML += "<hr><p><b>Moves: </b><button class='badge badge-danger'>~</button><p id='mvs'></p></p>";
+                for(var i=0;i<moves.length;i++){
+                        if(i%2==0)
+                        mvs.innerHTML += "<span class='badge badge-light'>" +moves[i].move.name + "</span>&nbsp;";
+                        else if(i%3==0)
+                        mvs.innerHTML += "<span class='badge badge-info'>" +moves[i].move.name + "</span>&nbsp;";
+                        else if(i%5==0)
+                        mvs.innerHTML += "<span class='badge badge-danger'>" +moves[i].move.name + "</span>&nbsp;";
+                        else
+                        mvs.innerHTML += "<span class='badge badge-success'>" +moves[i].move.name + "</span>&nbsp;";
+                    }
+                var stats = data.stats;
+                /* Chart */
+
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var chart = new Chart(ctx, {
+                    // The type of chart we want to create
+                    type: 'doughnut',
+
+                    // The data for our dataset
+                    data: {
+                        labels: ['Speed','special-defense','special-attack','defence','attack','hp'],
+                        datasets: [{
+                            label: 'My First dataset',
+                            backgroundColor:['#C39BD3','#76D7C4','#F9E79F','#F5B7B1','#AED6F1','#E5E7E9'],
+                            borderColor: ['#C39BD3','#76D7C4','#F9E79F','#F5B7B1','#AED6F1','#E5E7E9'],
+                            data:  [stats[0].base_stat,stats[1].base_stat,stats[2].base_stat,stats[3].base_stat,stats[4].base_stat,stats[5].base_stat]                        }]
+                    },
+
+                    // Configuration options go here
+                    options: {}
+                }); 
+
+            }).catch(err=>console.log(err));
+         
+        })
+
+        var frm = document.querySelector('#frm');
+        frm.addEventListener('submit',function(e){
+            e.preventDefault();
+            const pkmn = document.querySelector('#pkmn').value;
+            fetch(`https://pokeapi.co/api/v2/pokemon/${pkmn}`).then(res=>res.json()).then(data=>{
+                var pic = document.getElementById('pic');
+                pic.innerHTML = "<img src='"+ data.sprites.front_shiny + "'style='position:relative;top:-10px;' width=150 height=150/>";
+                console.log(data);
+                var desc = document.getElementById('desc');
+                var abilities = data.abilities;
+                var moves = data.moves;
+                desc.innerHTML = "<p><b>Type:</b> "+ data.types[0].type.name +
+                "</p><hr><p id='abty'><b>Abilities: </b></p>";
+                for(var i=0;i<abilities.length;i++){
+                       abty.innerHTML += "<span class='badge badge-danger'>" +abilities[i].ability.name + "</span>&nbsp;";
+                    }
+                    abty.innerHTML += "<hr><p><b>Moves: </b><button class='badge badge-danger'>~</button><p id='mvs'></p></p>";
+                for(var i=0;i<moves.length;i++){
+                        if(i%2==0)
+                        mvs.innerHTML += "<span class='badge badge-light'>" +moves[i].move.name + "</span>&nbsp;";
+                        else if(i%3==0)
+                        mvs.innerHTML += "<span class='badge badge-info'>" +moves[i].move.name + "</span>&nbsp;";
+                        else if(i%5==0)
+                        mvs.innerHTML += "<span class='badge badge-danger'>" +moves[i].move.name + "</span>&nbsp;";
+                        else
+                        mvs.innerHTML += "<span class='badge badge-success'>" +moves[i].move.name + "</span>&nbsp;";
+                    }
+                    var stats = data.stats;
+                /* Chart */
+
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var chart = new Chart(ctx, {
+                    // The type of chart we want to create
+                    type: 'doughnut',
+
+                    // The data for our dataset
+                    data: {
+                        labels: ['Speed','special-defense','special-attack','defence','attack','hp'],
+                        datasets: [{
+                            label: 'My First dataset',
+                            backgroundColor:['#C39BD3','#76D7C4','#F9E79F','#F5B7B1','#AED6F1','#E5E7E9'],
+                            borderColor: ['#C39BD3','#76D7C4','#F9E79F','#F5B7B1','#AED6F1','#E5E7E9'],
+                            data:  [stats[0].base_stat,stats[1].base_stat,stats[2].base_stat,stats[3].base_stat,stats[4].base_stat,stats[5].base_stat]                        }]
+                    },
+
+                    // Configuration options go here
+                    options: {}
+                }); 
+
+            }).catch(err=>{
+                var desc = document.getElementById('desc');
+                desc.innerHTML = "<span class='alert alert-danger'>Wrong Input</span>";
+                var canvas = document.getElementById('hd');
+                console.log(err)
+                });
+        })
+    </script>
+</html>
